@@ -4,43 +4,33 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-  <h:head>
+    <h:head>
         <title>Carga Geral</title>
     </h:head>
     <h:body>
-        <center>
-            <h:form id="form">
-                <table width="100%">
-                    <td colspan="2" align="center" valign="middle">
-                        <ui:insert name="Cabecalho">
-                            <tr>
-                                <img src="resources/logo.png" align="top" width="100%"/>
-                                <br></br><br></br>
-                            </tr>
-                        </ui:insert>
-                        <ui:insert name="Menu">
-                            <tr>
-                                <p:breadCrumb>  
-                                    <p:menuitem value="Inicio" url="index.xhtml" />  
-                                    <p:menuitem value="Inicio" url="index.xhtml" />  
-                                </p:breadCrumb>
-                                <br></br>
-                            </tr>
-                        </ui:insert>
-                        <ui:insert name="Meio">
-                            <tr>
-                                <br></br>
-                            </tr>
-                        </ui:insert>
-                        <ui:insert name="Rodape">
-                            <tr>
-                                <br></br>
-                            </tr>
-                        </ui:insert>
-                    </td>
-                </table>
-            </h:form>
-        </center>
+        <p:layout fullPage="true">  
+            <p:layoutUnit position="north" size="100">
+                <ui:insert name="Topo">
+                    
+                </ui:insert>
+                <img src="resources/logo.png" align="top" width="80%"/>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="50">  
+                <ui:insert name="Rodape">
+                    
+                </ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="west" size="200" header="Menu" resizable="true" collapsible="true">  
+                <ui:insert name="Menu">
+                    
+                </ui:insert>
+            </p:layoutUnit> 
+            <p:layoutUnit position="center">  
+                <ui:insert name="Meio">
+                    
+                </ui:insert>
+            </p:layoutUnit>  
+        </p:layout>  
+
     </h:body>
 </html>
-
