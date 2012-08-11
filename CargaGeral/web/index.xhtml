@@ -11,23 +11,36 @@
         <p:layout fullPage="true">  
             <p:layoutUnit position="north" size="100">
                 <ui:insert name="Topo">
-                    
+
                 </ui:insert>
                 <img src="resources/logo.png" align="top" width="80%"/>
             </p:layoutUnit>
             <p:layoutUnit position="south" size="50">  
                 <ui:insert name="Rodape">
-                    
+                    <center>ABIG'S - AGRIBUSINESS GLOBAL SOLUTION <br></br>
+                    Rua Vicente Machado, 1460 - 1º Piso - Sala 1 - Cascavel-PR - Fone: (45) 3038-1996</center>
                 </ui:insert>
             </p:layoutUnit>
-            <p:layoutUnit position="west" size="200" header="Menu" resizable="true" collapsible="true">  
-                <ui:insert name="Menu">
-                    
-                </ui:insert>
+            <p:layoutUnit position="west" size="170" header="Menu" resizable="true" collapsible="true"> 
+                <h:form>
+                    <ui:insert name="Menu">  
+                        <p:menu>  
+                            <p:menuitem value="Início" url="/"/>
+                            <p:submenu>
+                                <p:menuitem value="Teste"/>
+                                <p:menuitem value="Teste"/>            
+                            </p:submenu>
+                            <p:submenu value="Testando" label="Testando :D">
+                                <p:menuitem value="Um nome grande para ver o que acontece"/>
+                                <p:menuitem value="Teste"/>            
+                            </p:submenu>
+                        </p:menu>  
+                    </ui:insert>
+                </h:form>
             </p:layoutUnit> 
             <p:layoutUnit position="center">  
                 <ui:insert name="Meio">
-                    
+
                 </ui:insert>
             </p:layoutUnit>  
         </p:layout>  
