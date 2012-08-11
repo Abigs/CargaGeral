@@ -1,12 +1,46 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+  <h:head>
+        <title>Carga Geral</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <center>
+            <h:form id="form">
+                <table width="100%">
+                    <td colspan="2" align="center" valign="middle">
+                        <ui:insert name="Cabecalho">
+                            <tr>
+                                <img src="resources/logo.png" align="top" width="100%"/>
+                                <br></br><br></br>
+                            </tr>
+                        </ui:insert>
+                        <ui:insert name="Menu">
+                            <tr>
+                                <p:breadCrumb>  
+                                    <p:menuitem value="Inicio" url="index.xhtml" />  
+                                    <p:menuitem value="Inicio" url="index.xhtml" />  
+                                </p:breadCrumb>
+                                <br></br>
+                            </tr>
+                        </ui:insert>
+                        <ui:insert name="Meio">
+                            <tr>
+                                <br></br>
+                            </tr>
+                        </ui:insert>
+                        <ui:insert name="Rodape">
+                            <tr>
+                                <br></br>
+                            </tr>
+                        </ui:insert>
+                    </td>
+                </table>
+            </h:form>
+        </center>
     </h:body>
 </html>
 

@@ -1,0 +1,18 @@
+/* 
+    Document   : Padrao
+    Created on : 11/07/2012, 20:36:27
+    Author     : samuel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+    
+}
+
+painel {
+    border: 0;
+    
+}
+
