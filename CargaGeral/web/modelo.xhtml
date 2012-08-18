@@ -12,19 +12,19 @@
         <title><ui:insert name="titulo">Modelo</ui:insert></title>
     </h:head>
 
-    <h:body style="background-color: lavender">
+    <h:body style="background-color: white">
 
         <div id="top">
             <div>
                 <ui:insert name="topo">
-                    <h:graphicImage value="/resources/imagens/logo.jpg" width="8%"/>
+                    <h:graphicImage value="/resources/imagens/logo.jpg" width="12%"/>
                     <h:outputLabel value="Carga Geral" style="color: blue; font-size: 50px"/>
                 </ui:insert>
             </div>
             <div>
                 <ui:insert name="menu">
                     <h:form id="menu">
-                        <p:menubar autoDisplay="false">  
+                        <p:menubar autoDisplay="false" style="color: blue">  
                             <p:menuitem value="Inicio" url="index.xhtml"/>
                             <p:menuitem value="Cadastros" url="cadastros.xhtml"/>
                             <p:menuitem value="Lembretes" url="lembretes.xhtml"/>
@@ -42,15 +42,15 @@
         <div id="content" class="center_content">
             <ui:insert name="content">Content</ui:insert>
         </div>
-
+      
         <div id="bottom">
-            <ui:insert name="bottom">
-                <center>ABIG'S - AGRIBUSINESS GLOBAL SOLUTION <br></br>
-                    Rua Vicente Machado, 1460 - 1º Piso - Sala 1 - 
-                    Cascavel-PR - Fone: (45) 3038-1996</center>
-            </ui:insert>
-        </div>
 
+                <ui:insert name="bottom">
+                    <center>ABIG'S - AGRIBUSINESS GLOBAL SOLUTION <br></br>
+                        Rua Vicente Machado, 1460 - 1º Piso - Sala 1 - 
+                        Cascavel-PR - Fone: (45) 3038-1996</center>
+                </ui:insert>
+       </div>
     </h:body>
 
 </html>

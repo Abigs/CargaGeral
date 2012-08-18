@@ -1,10 +1,50 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="./modelo.xhtml">
+                template="./modelo.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html">
     <ui:define name="titulo">Movimentos</ui:define>
     <ui:define name="content">
-        content
+        
+        <form id="formMovimentacoes"> 
+            <p:panel header="Movimentações" id="painelMovimentacoes" style="text-align: left">
+                <h:outputLabel id="labelNumero" value="Numero: "/>
+                <p:inputText id="inputNumero" disabled="true" value=""/>
+
+                <br></br><br></br>
+
+                <h:outputLabel id="labelData" value="Data: "/>
+                <p:calendar value="#{calendarBean.date3}" id="popupButtonCal" showOn="button" />  
+
+                <h:outputLabel id="labelHora" value="Hora: "/>
+                <p:inputMask id="inputHora" mask="99:99:99"/>
+
+                <br></br><br></br>
+
+                <h:outputLabel id="labelPlaca" value="Placa: "/>
+                <p:inputText id="inputPlaca"/>
+
+                <h:outputLabel id="labelPlacaCavalo" value="Placa Cavalo: "/>
+                <p:inputText id="inputPlacaCavalo"/>
+
+                <h:outputLabel id="labelPlacaReboque" value="Placa Reboque: "/>
+                <p:inputText id="inputReboque"/>
+
+                <br></br><br></br>
+                
+                <h:outputLabel id="labelTransportador" value="Transportador: "/>
+                <p:selectOneMenu id="city" >
+                </p:selectOneMenu>
+                
+                
+                <h:outputLabel id="labelMotorista" value="Motorista: "/>
+                <p:inputText id="inputMotorista"/>
+                
+            </p:panel>
+            </form>
+       
     </ui:define>
 </ui:composition>
+
 
