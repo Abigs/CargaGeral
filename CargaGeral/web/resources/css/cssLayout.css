@@ -1,15 +1,14 @@
 
 #top {
     position: relative;
-    background-color: #036fab;
-    color: white;
+    background-color: #ffffff;
     padding: 5px;
     margin: 0px 0px 10px 0px;
 }
 
 #bottom {
     position: relative;
-    background-color: #c2dfef;
+    background-color: #ffffff;
     padding: 5px;
     margin: 10px 0px 0px 0px;
 }
