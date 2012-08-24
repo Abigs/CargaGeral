@@ -3,47 +3,158 @@
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="./modelo.xhtml"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:h="http://java.sun.com/jsf/html">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
     <ui:define name="titulo">Movimentos</ui:define>
     <ui:define name="content">
-        
+
         <form id="formMovimentacoes"> 
-            <p:panel header="Movimentações" id="painelMovimentacoes" style="text-align: left">
-                <h:outputLabel id="labelNumero" value="Numero: "/>
-                <p:inputText id="inputNumero" disabled="true" value=""/>
+            <div align="center" id="corpo">
+                <p:panelGrid columns="2"  id="painelMovimentacoes" style="text-align: left">
+                    <f:facet name="header">Movimentações</f:facet>
+                    <br></br>
+                    <p:row>
+                        <h:outputLabel id="labelNumero" value="Numero: "/>
+                        <p:inputText id="inputNumero" disabled="true" value=""/>
+                    </p:row>
 
-                <br></br><br></br>
+                    <p:row>
+                        <h:outputLabel id="labelData" value="Data: "/>
+                        <p:calendar value="#{calendarBean.date3}" id="popupButtonCal" showOn="button" />  
+                    </p:row>
 
-                <h:outputLabel id="labelData" value="Data: "/>
-                <p:calendar value="#{calendarBean.date3}" id="popupButtonCal" showOn="button" />  
+                    <p:row>
+                        <h:outputLabel id="labelHora" value="Hora: "/>
+                        <p:inputMask id="inputHora" mask="99:99:99"/>
+                    </p:row>
 
-                <h:outputLabel id="labelHora" value="Hora: "/>
-                <p:inputMask id="inputHora" mask="99:99:99"/>
+                    <p:row>
+                        <h:outputLabel id="labelPlaca" value="Placa: "/>
+                        <p:inputText id="inputPlaca"/>
 
-                <br></br><br></br>
+                        <h:outputLabel id="labelPlacaCavalo" value="Placa Cavalo: "/>
+                        <p:inputText id="inputPlacaCavalo"/>
+                    </p:row>
+                    <p:row>
+                        <h:outputLabel id="labelPlacaReboque" value="Placa Reboque: "/>
+                        <p:inputText id="inputReboque"/>
+                    </p:row>
 
-                <h:outputLabel id="labelPlaca" value="Placa: "/>
-                <p:inputText id="inputPlaca"/>
+                    <p:row>
+                        <h:outputLabel id="labelTransportador" value="Transportador: "/>
+                        <p:selectOneMenu id="selectTransportador" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                    </p:row>
+                    <p:row>
+                        <h:outputLabel id="labelMotorista" value="Motorista: "/>
+                        <p:inputText id="inputMotorista"/>
+                    </p:row>
+                    <p:row>
 
-                <h:outputLabel id="labelPlacaCavalo" value="Placa Cavalo: "/>
-                <p:inputText id="inputPlacaCavalo"/>
+                        <h:outputLabel id="labelRgMotorista" value="RG do Motorista: "/>
+                        <p:inputText id="inputRgMotorista"/>
+                    </p:row>
+                    <p:row>
+                        <h:outputLabel id="labelCpfMotorista" value="CPF do Motorista: "/>
+                        <p:inputText id="inputCpfMotorista"/>
 
-                <h:outputLabel id="labelPlacaReboque" value="Placa Reboque: "/>
-                <p:inputText id="inputReboque"/>
+                        <h:outputLabel id="labelCtrc" value="CTRC: "/>
+                        <p:inputText id="inputCtrc"/>
+                    </p:row>
+                    <p:row>
+                        <h:outputLabel id="labelCnhMotorista" value="CNH do Motorista: "/>
+                        <p:inputText id="inputCnh"/>
+                    </p:row>
+                    <p:row>
+                        <h:outputLabel id="labelTransParaConta" value="Transporte para a conta: "/>
+                        <p:selectOneMenu id="selectTransParaConta" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                    </p:row>
+                    <p:row> 
+                        <h:outputLabel id="labelTipo" value="Tipo: "/>
+                        <p:selectOneMenu id="selectTipo" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                    </p:row>
+                    <p:row> 
+                        <h:outputLabel id="labelMovimentacao" value="Movimentação: "/>
+                        <p:selectOneMenu id="selectMovimentacao" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                    </p:row>
+                    <p:row> 
+                        <h:outputLabel id="labelOperacao" value="Operação: "/>
+                        <p:selectOneMenu id="selectOperacao" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                        <h:outputLabel id="labelCondicao" value="Condição: "/>
+                        <p:selectOneMenu id="selectCondicao" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                    </p:row>
+                    <p:row> 
+                        <h:outputLabel id="labelLocOperacao" value="Local Operação: "/>
+                        <p:selectOneMenu id="selectLocOperacao" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                    </p:row>
+                    <p:row> 
+                        <h:outputLabel id="labelCliente" value="Cliente: "/>
+                        <p:selectOneMenu id="selectCliente" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                    </p:row>
 
-                <br></br><br></br>
+                    <p:row> 
+                        <h:outputLabel id="labelDespachante" value="Despachante: "/>
+                        <p:selectOneMenu id="selectDespachante" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                    </p:row>
+                    <p:row> 
+                        <h:outputLabel id="labelServico" value="Serviço: "/>
+                        <p:selectOneMenu id="selectServico" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                    </p:row>
+                    <p:row> 
+                        <h:outputLabel id="labelNavio" value="Navio: "/>
+                        <p:selectOneMenu id="selectNavio" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                    </p:row> 
+                    <p:row> 
+                        <h:outputLabel id="labelOrigem" value="Origem: "/>
+                        <p:selectOneMenu id="selectOrigem" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                    </p:row>
+                    <p:row> 
+                        <h:outputLabel id="labelDestino" value="Destino: "/>
+                        <p:selectOneMenu id="selectDestino" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                    </p:row>
+                    <p:row>
+                        <h:outputLabel id="labelObservacao" value="Observação: "/>
+                    </p:row>
+                        <p:row> 
+                            <p:inputTextarea id="inputObservacao" autoResize="false" cols="100"/>
+                        </p:row>
+                   
+                </p:panelGrid>
                 
-                <h:outputLabel id="labelTransportador" value="Transportador: "/>
-                <p:selectOneMenu id="city" >
-                </p:selectOneMenu>
-                
-                
-                <h:outputLabel id="labelMotorista" value="Motorista: "/>
-                <p:inputText id="inputMotorista"/>
-                
-            </p:panel>
-            </form>
-       
+                <p:panel>
+                    <p:button value="Limpar"/>
+                    <p:button value="Excluir"/>
+                    <p:button value="Pesquisar"/>
+                    <p:button value="ok"/>
+                </p:panel>
+            </div>
+        </form>
+
     </ui:define>
 </ui:composition>
 
