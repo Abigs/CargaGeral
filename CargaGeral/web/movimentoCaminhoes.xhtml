@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./modelo.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <ui:define name="titulo">Movimento Caminhões</ui:define>
+    <ui:define name="content">
+
+        <form id="formMovimentacoes"> 
+            <div align="center" id="corpo">
+                <p:panelGrid columns="2"  id="painelMovimentacoes" style="text-align: left">
+                    <f:facet name="header">Movimento Caminhões</f:facet>
+
+                    <p:row>
+                        <h:outputLabel id="labelDataInicial" value="Período: "/>
+                        <p:calendar value="#{calendarBean.date3}" id="CalInicio" showOn="button" />  
+                    </p:row>
+                    <p:row>
+                        <h:outputLabel id="labelDataFinal" value="à: "/>
+                        <p:calendar value="#{calendarBean.date3}" id="CalFinal" showOn="button" />  
+                    </p:row>
+
+
+                </p:panelGrid>
+
+                <form id="botoes">
+                    <p:button value="Voltar"/>
+                    <p:button value="ok"/>
+                </form>
+            </div>
+        </form>
+
+    </ui:define>
+</ui:composition>
+
+
