@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./modelo.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <ui:define name="titulo">Chegada de Caminhões</ui:define>
+    <ui:define name="content">
+
+        <form id="formMovimentacoes"> 
+            <div align="center" id="corpo">
+                <p:panelGrid columns="2"  id="painelMovimentacoes" style="text-align: left">
+                    <f:facet name="header">Chegada de Caminhões</f:facet>
+
+                    <h:outputLabel id="labelPlacaCavalo" value="Placa Cavalo: "/>
+                    <p:inputText id="inputPlacaCavalo"/>
+
+                    <h:outputLabel id="labelMotorista" value="Motorista: "/>
+                    <p:inputText id="inputMotorista"/>
+
+                    <h:outputLabel id="labelArmazem" value="Armazém: "/>
+                    <p:inputText id="inputArmazem"/>
+
+                    <h:outputLabel id="labelArea" value="Área: "/>
+                    <p:selectOneMenu id="selectTArea" >
+                        <f:selectItem itemLabel="teste"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel id="labelMovimento" value="Movimento: "/>
+                    <p:selectOneMenu id="selectMovimento" >
+                        <f:selectItem itemLabel="teste"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel id="labelDestinatario" value="Destinatário: "/>
+                    <p:selectOneMenu id="selectDestinatario" >
+                        <f:selectItem itemLabel="teste"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel id="labelNota" value="Nota: "/>
+                    <p:inputText id="inputNota"/>
+
+                    <h:outputLabel id="labelTipo" value="Tipo: "/>
+                    <p:inputText id="inputTipo"/>
+
+                    <h:outputLabel id="labelPlacaNF" value="Placa NF: "/>
+                    <p:inputText id="inputPlacaNF"/>
+
+                    <h:outputLabel id="labelPlacaCarreta" value="Placa Carreta: "/>
+                    <p:inputText id="inputPlacaCarreta"/>
+
+                    <h:outputLabel id="labelDataChegada" value="Data Chegada: "/>
+                    <p:calendar value="#{calendarBean.date3}" id="calChegada" showOn="button" />
+
+                    <h:outputLabel id="labelHora" value="Hora Chegada: "/>
+                    <p:inputMask id="inputHora" mask="99:99:99"/>
+
+                    <h:outputLabel id="labelObservacao" value="Observação: "/>
+                    <p:inputTextarea id="inputObservacao" autoResize="false"/>
+
+                </p:panelGrid>
+
+                <form id="botoes">
+                    <p:button value="Limpar"/>
+                    <p:button value="Excluir" disabled="true"/>
+                    <p:button value="Pesquisar"/>
+                    <p:button value="ok"/>
+                </form>
+            </div>
+        </form>
+
+    </ui:define>
+</ui:composition>
+
+
