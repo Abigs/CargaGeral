@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./modelo.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <ui:define name="titulo">Consulta Caminhões em Trânsito</ui:define>
+    <ui:define name="content">
+
+        <form id="formMovimentacoes"> 
+            <p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
+                         emptyMessage="Não existe Caminhões em Trânsito no momento!"
+                         paginator="true" rows="10"  
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                         rowsPerPageTemplate="10, 20, 50">  
+                <f:facet name="header">  
+                    Consulta Caminhões em Trânsito  
+                </f:facet>  
+
+                <p:column>  
+                    <f:facet name="header">  
+                        <h:outputText value="Placa" />  
+                    </f:facet>  
+                    <h:outputText value="#{car.model}" />  
+                </p:column>  
+
+                <p:column>  
+                    <f:facet name="header">  
+                        <h:outputText value="Motorista" />  
+                    </f:facet>  
+                    <h:outputText value="#{car.year}" />  
+                </p:column>  
+
+                <p:column>  
+                    <f:facet name="header">  
+                        <h:outputText value="AZ" />  
+                    </f:facet>  
+                    <h:outputText value="#{car.manufacturer}" />  
+                </p:column>  
+
+                <p:column>  
+                    <f:facet name="header">  
+                        <h:outputText value="Cliente" />  
+                    </f:facet>  
+                    <h:outputText value="#{car.color}" />  
+                </p:column>  
+                
+                 <p:column>  
+                    <f:facet name="header">  
+                        <h:outputText value="Nota Fiscal" />  
+                    </f:facet>  
+                    <h:outputText value="#{car.color}" />  
+                </p:column> 
+                
+                 <p:column>  
+                    <f:facet name="header">  
+                        <h:outputText value="Mercadoria" />  
+                    </f:facet>  
+                    <h:outputText value="#{car.color}" />  
+                </p:column> 
+                
+                <p:column>  
+                    <f:facet name="header">  
+                        <h:outputText value="Entrada em" />  
+                    </f:facet>  
+                    <h:outputText value="#{car.color}" />  
+                </p:column> 
+                
+            </p:dataTable>  
+        </form>
+
+    </ui:define>
+</ui:composition>
+
+
