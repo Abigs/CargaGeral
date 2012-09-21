@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./modelo.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <ui:define name="titulo">Unitização</ui:define>
+    <ui:define name="content">
+
+        <form id="formMovimentacoes"> 
+            <div align="center" id="corpo">
+                <p:panelGrid columns="2"  id="painelMovimentacoes" style="text-align: left">
+                    <f:facet name="header">Unitização</f:facet>
+                    <br></br>
+                    <p:row>
+                        <h:outputLabel id="labelNumero" value="Numero: "/>
+                        <p:inputText id="inputNumero" disabled="true" value=""/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelData" value="Data: "/>
+                        <p:calendar value="#{calendarBean.date3}" id="popupButtonCal" showOn="button" />  
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelHora" value="Hora: "/>
+                        <p:inputMask id="inputHora" mask="99:99:99"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelConteiner" value="Conteiner: "/>
+                        <p:inputText id="inputConteiner"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelOperacao" value="Operação: "/>
+                        <p:selectOneMenu id="selectOperacao" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelCliente" value="Cliente: "/>
+                        <p:inputText id="inputCliente" disabled="true"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelDespachante" value="Despachante: "/>
+                        <p:inputText id="inputDespachante" disabled="true"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelTipo" value="Tipo: "/>
+                        <p:inputText id="inputTipo" disabled="true"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelPorto" value="Porto: "/>
+                        <p:inputText id="inputPorto" disabled="true"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelNavio" value="Navio: "/>
+                        <p:inputText id="inputNavio" disabled="true"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelObservacao" value="Observação: "/>
+                        <p:inputTextarea id="inputObservacao" autoResize="false" cols="60"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelMinAgricultura" value="Min. Agricultura: "/>
+                        <p:selectOneMenu id="selectMinAgricultura" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel id="labelDataMinAcricultura" value="Data: "/>
+                        <p:calendar value="#{calendarBean.date3}" id="CalDataMinAgricultura" showOn="button" />  
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelIbama" value="IBAMA: "/>
+                        <p:selectOneMenu id="selectIbama" >
+                            <f:selectItem itemLabel="teste"/>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel id="labelDataIbama" value="Data: "/>
+                        <p:calendar value="#{calendarBean.date3}" id="CalData" showOn="button" />  
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelHoraInicio" value="Início: "/>
+                        <p:inputMask id="inputHoraInicio" mask="99:99:99"/>
+
+                        <h:outputLabel id="labelHoraFim" value="às: "/>
+                        <p:inputMask id="inputHoraFim" mask="99:99:99"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelDataTermino" value="Término: "/>
+                        <p:calendar value="#{calendarBean.date3}" id="CalDataTermino" showOn="button" />  
+
+                        <h:outputLabel id="labelHoraTermino" value="às: "/>
+                        <p:inputMask id="inputHoraTermino" mask="99:99:99"/>
+                    </p:row>
+
+                    <p:row>
+                        <p:dataTable var="car" value="#{tableBean.carsSmall}">  
+                            <p:column headerText="Model">  
+                                <h:outputText value="#{car.model}" />  
+                            </p:column>  
+
+                            <p:column headerText="Year">  
+                                <h:outputText value="#{car.year}" />  
+                            </p:column>  
+
+                            <p:column headerText="Manufacturer">  
+                                <h:outputText value="#{car.manufacturer}" />  
+                            </p:column>  
+
+                            <p:column headerText="Color">  
+                                <h:outputText value="#{car.color}" />  
+                            </p:column>  
+                        </p:dataTable> 
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelGaleria" value="Abrir Galeria de Imagens: "/>
+                        <p:graphicImage value="/imagens/iconeImagens.png" onclick="dlg.show()" style="cursor:pointer" width="10%"/>  
+
+                        <p:dialog widgetVar="dlg" height="400" header="Galeria de Imagens" resizable="false" modal="true">  
+                            <p:graphicImage value="/imagens/morango.jpg  " />
+                        </p:dialog>
+                    </p:row>
+
+
+                </p:panelGrid>
+
+                <form id="botoes">
+                    <p:button value="Limpar"/>
+                    <p:button value="Excluir"/>
+                    <p:button value="Imprimir"/>
+                    <p:button value="Pesquisar"/>
+                    <p:button value="ok"/>
+                </form>
+            </div>
+        </form>
+
+    </ui:define>
+</ui:composition>
+
+
+
