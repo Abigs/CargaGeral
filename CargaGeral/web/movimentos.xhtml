@@ -15,56 +15,56 @@
                     <br></br>
                     <p:row>
                         <h:outputLabel id="labelNumero" value="Numero: "/>
-                        <p:inputText id="inputNumero" disabled="true" value=""/>
+                        <p:inputText id="inputNumero" disabled="true" value="#{movimentosBean.numero}"/>
                     </p:row>
 
                     <p:row>
                         <h:outputLabel id="labelData" value="Data: "/>
-                        <p:calendar value="#{calendarBean.date3}" id="popupButtonCal" showOn="button" />  
+                        <p:calendar value="#{movimentosBean.data}" id="popupButtonCal" showOn="button" />  
                     </p:row>
 
                     <p:row>
                         <h:outputLabel id="labelHora" value="Hora: "/>
-                        <p:inputMask id="inputHora" mask="99:99:99"/>
+                        <p:inputMask id="inputHora" mask="99:99:99" value="#{movimentosBean.hora}"/>
                     </p:row>
 
                     <p:row>
                         <h:outputLabel id="labelPlaca" value="Placa: "/>
-                        <p:inputText id="inputPlaca"/>
+                        <p:inputText id="inputPlaca" value="#{movimentosBean.placa}"/>
 
                         <h:outputLabel id="labelPlacaCavalo" value="Placa Cavalo: "/>
-                        <p:inputText id="inputPlacaCavalo"/>
+                        <p:inputText id="inputPlacaCavalo" value="#{movimentosBean.placaCavalo}"/>
                     </p:row>
                     <p:row>
                         <h:outputLabel id="labelPlacaReboque" value="Placa Reboque: "/>
-                        <p:inputText id="inputReboque"/>
+                        <p:inputText id="inputReboque" value="#{movimentosBean.placaReboque}"/>
                     </p:row>
 
                     <p:row>
                         <h:outputLabel id="labelTransportador" value="Transportador: "/>
                         <p:selectOneMenu id="selectTransportador" >
-                            <f:selectItem itemLabel="teste"/>
+                            <f:selectItem itemLabel="teste" value="#{movimentosBean.transportador}"/>
                         </p:selectOneMenu>
                     </p:row>
                     <p:row>
                         <h:outputLabel id="labelMotorista" value="Motorista: "/>
-                        <p:inputText id="inputMotorista"/>
+                        <p:inputText id="inputMotorista" value="#{movimentosBean.motorista}"/>
                     </p:row>
                     <p:row>
 
                         <h:outputLabel id="labelRgMotorista" value="RG do Motorista: "/>
-                        <p:inputText id="inputRgMotorista"/>
+                        <p:inputText id="inputRgMotorista" value="#{movimentosBean.rgMotorista}"/>
                     </p:row>
                     <p:row>
                         <h:outputLabel id="labelCpfMotorista" value="CPF do Motorista: "/>
-                        <p:inputText id="inputCpfMotorista"/>
+                        <p:inputText id="inputCpfMotorista" value="#{movimentosBean.cpfMotorista}"/>
 
                         <h:outputLabel id="labelCtrc" value="CTRC: "/>
-                        <p:inputText id="inputCtrc"/>
+                        <p:inputText id="inputCtrc" value="#{movimentosBean.cnhMotorista}"/>
                     </p:row>
                     <p:row>
                         <h:outputLabel id="labelCnhMotorista" value="CNH do Motorista: "/>
-                        <p:inputText id="inputCnh"/>
+                        <p:inputText id="inputCnh" value="#{movimentosBean.cnhMotorista}"/>
                     </p:row>
                     <p:row>
                         <h:outputLabel id="labelTransParaConta" value="Transporte para a conta: "/>
@@ -150,7 +150,8 @@
                     <p:button value="Limpar"/>
                     <p:button value="Excluir"/>
                     <p:button value="Pesquisar"/>
-                    <p:button value="ok"/>
+                    <p:button value="ok" onclick="#{movimentosBean.cadastrar()}"/>
+                    <h:commandButton value="oi" action="#{movimentosBean.cadastrar()}"/>
                 </form>
             </div>
         </form>
