@@ -4,11 +4,6 @@
  */
 package Bean;
 
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
