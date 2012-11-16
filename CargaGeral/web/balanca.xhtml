@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./modelo.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <ui:define name="titulo">balanca</ui:define>
+    <ui:define name="content">
+        <h:form id="novaPesagem">
+            <div align="center" id="corpo">
+                <br></br>
+                <p:panelGrid columns="6"  id="painelMovimentacoes" style="text-align: center">
+                    <f:facet name="header">Balanca</f:facet>
+
+                    <p:row>
+                        <h:outputLabel id="labelNomeTicket" value="Ticket: "/>
+                    </p:row>
+                    <p:row>
+                        <h:outputLabel id="labelTicket" value="#{balancaBean.ticket}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelCgc_cpf" value="CGC-CPF: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputText id="inputCgc_cpf" value="#{balancaBean.cgc_cpf}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelCd_navio" value="Código Navio: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputText id="inputCd_navio" value="#{balancaBean.cd_navio}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelCd_item" value="Código Item: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputText id="inputCd_item" value="#{balancaBean.cd_item}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelDescricaoProduto" value="descrição do pruduto: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputTextarea id="inputDescricaoProduto" value="#{balancaBean.descricao_produto}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelDescricaoNavio" value="descrição do Navio: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputTextarea id="inputDescricaoNavio" value="#{balancaBean.descricao_navio}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelPlacaCavalo" value="Placa do Cavalo: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputText id="inputPlacaCavalo" value="#{balancaBean.placa_cavalo}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelPlacaCarreta" value="Placa da Carreta: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputText id="inputPlacaCarreta" value="#{balancaBean.placa_carreta}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelNomeMotorista" value="Nome do Motorista: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputText id="inputNomeMotorista" value="#{balancaBean.nome_motorista}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelCnjTransportadora" value="CNJ Transportadora: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputText id="inputCnjTransportadora" value="#{balancaBean.cnj_transportadora}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelNumeroPedido" value="Numero do Pedido "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputText id="inputNumeroPedido" value="#{balancaBean.nr_predido}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelPeso" value="Peso: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputText id="inputPeso" value="#{balancaBean.peso}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelPesoEntrada" value="Peso entrada: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputText id="inputPesoEntrada" value="#{balancaBean.peso_entrada}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelPesoSaida" value="Peso Saida: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputText id="inputPesoSaida" value="#{balancaBean.peso_saida}"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelDataEntrada" value="Data Entrada: "/>
+                    </p:row>
+                    <p:row>
+                        <p:calendar value="#{balancaBean.data_entrada}" id="dataEntrada" pattern="dd/MM/yyyy"/>
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelDataSaida" value="Data Saida: "/>
+                    </p:row>
+                    <p:row>
+                        <p:calendar value="#{balancaBean.data_entrada}" id="dataSaida" pattern="dd/MM/yyyy"/> 
+                    </p:row>
+
+                    <p:row>
+                        <h:outputLabel id="labelFaturado" value="Faturado: "/>
+                    </p:row>
+                    <p:row>
+                        <p:selectBooleanCheckbox value="#{balancaBean.faturado}" />  
+                    </p:row>
+
+                </p:panelGrid>
+                <br></br>
+                
+                <p:commandButton value="Cadastrar" actionListener="#{balancaBean.cadastrar()}" ajax="false"/>  
+                <h:message for="form"/>
+
+
+
+            </div>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+

@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,6 +38,22 @@ public class BalancaDAO extends PostgresDAO {
     boolean faturado;
 
     public BalancaDAO() {
+        this.cgc_cpf = "";
+        this.cd_navio = 0;
+        this.cd_item = 0;
+        this.descricao_produto = "";
+        this.descricao_navio = "";
+        this.placa_cavalo = "";
+        this.placa_carreta = "";
+        this.nome_motorista = "";
+        this.cnj_transportadora = "";
+        this.nr_predido = 0;
+        this.peso = 0;
+        this.peso_entrada = 0;
+        this.peso_saida = 0;
+        this.data_entrada = null;
+        this.data_saida = null;
+        this.faturado = false;
     }
 
     public int getTicket() {
@@ -175,42 +192,48 @@ public class BalancaDAO extends PostgresDAO {
         this.faturado = faturado;
     }
 
-    public void insertBalancaDAO() {
+    public boolean insertBalancaDAO() {
         try {
+            pegarTicket();
+
+
             String str = "INSERT INTO balanca VALUES ("
-                    + getCgc_cpf() + ", "
+                    + getTicket() + ", "
+                    + "'" + getCgc_cpf() + "'" + ", "
                     + getCd_navio() + ", "
                     + getCd_item() + ", "
-                    + getDescricao_produto() + ", "
-                    + getDescricao_navio() + ", "
-                    + getPlaca_cavalo() + ", "
-                    + getPlaca_carreta() + ", "
-                    + getNome_motorista() + ", "
-                    + getCnj_transportadora() + ", "
+                    + "'" + getDescricao_produto() + "'" + ", "
+                    + "'" + getDescricao_navio() + "'" + ", "
+                    + "'" + getPlaca_cavalo() + "'" + ", "
+                    + "'" + getPlaca_carreta() + "'" + ", "
+                    + "'" + getNome_motorista() + "'" + ", "
+                    + "'" + getCnj_transportadora() + "'" + ", "
                     + getNr_predido() + ", "
                     + getPeso() + ", "
                     + getPeso_entrada() + ", "
-                    + getPeso_saida() + ", "
-                    + getData_entrada() + ", "
-                    + getData_saida() + ", "
-                    + isFaturado() + ", "
-                    + ");";
-
+                    + getPeso_saida() + ");";
+            System.out.println(getTicket());
+    //depois tem que adicionar a data e booleano
             Class.forName("org.postgresql.Driver");
             java.sql.Connection conexao = DriverManager.getConnection(this.url, this.usuario, this.senha);
             Statement statement = conexao.createStatement();
-            statement.execute(str);
+            statement.executeUpdate(str);
+            return true;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(BalancaDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(BalancaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return false;
+
     }
 
-    public int pegarTicket() {
-        int ultimo = 1;
-
+     public int pegarTicket() {
+        int ultimo = 0;
         try {
+            
+
             String str = "SELECT ticket "
                     + "FROM balanca "
                     + "ORDER BY ticket;";
@@ -219,17 +242,17 @@ public class BalancaDAO extends PostgresDAO {
             java.sql.Connection conexao = DriverManager.getConnection(this.url, this.usuario, this.senha);
             Statement statement = conexao.createStatement();
             ResultSet rs = statement.executeQuery(str);
-            if (rs != null) {
-                while (rs.next()) {
-                    ultimo = rs.getInt("ticket") + 1;
-                }
+            while (rs.next()) {
+                ultimo = rs.getInt("ticket");
             }
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(BalancaDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(BalancaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        return ultimo;
+        
+        setTicket(ultimo+1);
+        return getTicket();
     }
 }

@@ -6,15 +6,18 @@ package Bean;
 
 import DAO.BalancaDAO;
 import java.sql.Date;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author samuel
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class BalancaBean {
 
     BalancaDAO bd = new BalancaDAO();
@@ -38,6 +41,22 @@ public class BalancaBean {
 
     public BalancaBean() {
         this.ticket = this.bd.getTicket();
+        this.cgc_cpf = "";
+        this.cd_navio = 0;
+        this.cd_item = 0;
+        this.descricao_produto = "";
+        this.descricao_navio = "";
+        this.placa_cavalo = "";
+        this.placa_carreta = "";
+        this.nome_motorista = "";
+        this.cnj_transportadora = "";
+        this.nr_predido = 0;
+        this.peso = 0;
+        this.peso_entrada = 0;
+        this.peso_saida = 0;
+        this.data_entrada = null;
+        this.data_saida = null;
+        this.faturado = false;
 
     }
 
@@ -184,5 +203,36 @@ public class BalancaBean {
 
     public void setFaturado(boolean faturado) {
         this.faturado = faturado;
+    }
+
+    public void cadastrar() {
+
+        this.bd.setTicket(ticket);
+        this.bd.setCgc_cpf(cgc_cpf);
+        this.bd.setCd_navio(cd_navio);
+        this.bd.setCd_item(cd_item);
+        this.bd.setDescricao_produto(descricao_produto);
+        this.bd.setDescricao_navio(descricao_navio);
+        this.bd.setPlaca_carreta(placa_carreta);
+        this.bd.setPlaca_cavalo(placa_cavalo);
+        this.bd.setNome_motorista(nome_motorista);
+        this.bd.setCnj_transportadora(cnj_transportadora);
+        this.bd.setNr_predido(nr_predido);
+        this.bd.setPeso(peso);
+        this.bd.setPeso_entrada(peso_entrada);
+        this.bd.setPeso_saida(peso_saida);
+        this.bd.setData_entrada(data_entrada);
+        this.bd.setData_saida(data_saida);
+        this.bd.setFaturado(faturado);
+        
+        FacesMessage msg;
+        
+        if (this.bd.insertBalancaDAO()) {
+            msg = new FacesMessage("Cadastro efetuado!!!");
+        } else {
+            msg = new FacesMessage("Cadastro Falhou");
+        }
+        
+        FacesContext.getCurrentInstance().addMessage("form", msg);
     }
 }
