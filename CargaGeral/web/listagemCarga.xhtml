@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./modelo.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <ui:define name="titulo">Listagem de Cargas</ui:define>
+    <ui:define name="content">
+        <h:form id="novaPesagem">
+            <div align="center" id="corpo">
+                <br></br>
+
+                <p:dataTable id="tabela_listagem" var="listagem" >  
+                    <f:facet name="header">  
+                        Listagem Movimentação 
+                    </f:facet>  
+
+                    <p:column headerText="Tickt">  
+                        #{car.model}  
+                    </p:column>  
+
+                    <p:column headerText="Placa do Cavalo">  
+                        #{car.year}  
+                    </p:column>  
+
+                    <p:column headerText="Data Entrada" >  
+                        #{car.manufacturer}  
+                    </p:column>  
+
+                    <p:column headerText="Peso">  
+                        #{car.color}  
+                    </p:column>  
+                </p:dataTable> 
+            </div>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+
