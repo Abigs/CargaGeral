@@ -7,7 +7,7 @@
                 xmlns:f="http://java.sun.com/jsf/core">
     <ui:define name="titulo">Cadastrar Navio</ui:define>
     <ui:define name="content">
-        <h:form id="novaPesagem">
+        <h:form id="cadastroNavio">
             <div align="center" id="corpo">
                 <br></br>
                 <p:panelGrid columns="2"  id="painelMovimentacoes" style="text-align: center">
@@ -32,11 +32,7 @@
                 
                 <p:commandButton value="Cadastrar" actionListener="#{cadc010Bean.cadastrar()}" ajax="false"/>  
                 <h:message for="form"/>
-
-
-
             </div>
-
         </h:form>
     </ui:define>
 </ui:composition>

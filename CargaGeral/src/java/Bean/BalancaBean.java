@@ -5,11 +5,14 @@
 package Bean;
 
 import DAO.BalancaDAO;
+import DAO.estc007DAO;
+import Entidades.Navio;
+import Entidades.Produto;
 import java.sql.Date;
+import java.util.ArrayList;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 /**
@@ -20,13 +23,14 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class BalancaBean {
 
+    // ArrayList<Navio> listaNavio;
     BalancaDAO bd = new BalancaDAO();
+    String strNavio;
+    String strProduto;
+    Navio navio;
+    Produto produto;
     int ticket;
     String cgc_cpf;
-    int cd_navio;
-    int cd_item;
-    String descricao_produto;
-    String descricao_navio;
     String placa_cavalo;
     String placa_carreta;
     String nome_motorista;
@@ -40,12 +44,13 @@ public class BalancaBean {
     boolean faturado;
 
     public BalancaBean() {
+        //   this.listaNavio = new ArrayList<Navio>();
+
+        this.strNavio = "";
+        this.strProduto = "";
+
         this.ticket = this.bd.getTicket();
         this.cgc_cpf = "";
-        this.cd_navio = 0;
-        this.cd_item = 0;
-        this.descricao_produto = "";
-        this.descricao_navio = "";
         this.placa_cavalo = "";
         this.placa_carreta = "";
         this.nome_motorista = "";
@@ -60,6 +65,44 @@ public class BalancaBean {
 
     }
 
+    public String getPlaca_cavalo() {
+        return placa_cavalo;
+    }
+
+    
+    
+    public String getStrNavio() {
+        return strNavio;
+    }
+
+    public void setStrNavio(String strNavio) {
+        this.strNavio = strNavio;
+    }
+
+    public String getStrProduto() {
+        return strProduto;
+    }
+
+    public void setStrProduto(String strProduto) {
+        this.strProduto = strProduto;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+   
+
+    // public ArrayList<Navio> getListaNavio() {
+    //    return listaNavio;
+    //}
+    // public void setListaNavio(ArrayList<Navio> listaNavio) {
+    //     this.listaNavio = listaNavio;
+    // }
     public BalancaDAO getBd() {
         return bd;
     }
@@ -85,42 +128,15 @@ public class BalancaBean {
         this.cgc_cpf = cgc_cpf;
     }
 
-    public int getCd_navio() {
-        return cd_navio;
+    public Navio getNavio() {
+        return navio;
     }
 
-    public void setCd_navio(int cd_navio) {
-        this.cd_navio = cd_navio;
+    public void setNavio(Navio navio) {
+        this.navio = navio;
     }
 
-    public int getCd_item() {
-        return cd_item;
-    }
-
-    public void setCd_item(int cd_item) {
-        this.cd_item = cd_item;
-    }
-
-    public String getDescricao_produto() {
-        return descricao_produto;
-    }
-
-    public void setDescricao_produto(String descricao_produto) {
-        this.descricao_produto = descricao_produto;
-    }
-
-    public String getDescricao_navio() {
-        return descricao_navio;
-    }
-
-    public void setDescricao_navio(String descricao_navio) {
-        this.descricao_navio = descricao_navio;
-    }
-
-    public String getPlaca_cavalo() {
-        return placa_cavalo;
-    }
-
+    
     public void setPlaca_cavalo(String placa_cavalo) {
         this.placa_cavalo = placa_cavalo;
     }
@@ -207,12 +223,15 @@ public class BalancaBean {
 
     public void cadastrar() {
 
+        this.navio = pegarNavio(strNavio);
+        this.produto = pegarProduto(strProduto);
+
         this.bd.setTicket(ticket);
         this.bd.setCgc_cpf(cgc_cpf);
-        this.bd.setCd_navio(cd_navio);
-        this.bd.setCd_item(cd_item);
-        this.bd.setDescricao_produto(descricao_produto);
-        this.bd.setDescricao_navio(descricao_navio);
+        this.bd.setCd_navio(navio.getCdNavio());
+        this.bd.setCd_item(produto.getCd_iten());
+        this.bd.setDescricao_produto(produto.getDescricao());
+        this.bd.setDescricao_navio(navio.getDescricao());
         this.bd.setPlaca_carreta(placa_carreta);
         this.bd.setPlaca_cavalo(placa_cavalo);
         this.bd.setNome_motorista(nome_motorista);
@@ -224,15 +243,39 @@ public class BalancaBean {
         this.bd.setData_entrada(data_entrada);
         this.bd.setData_saida(data_saida);
         this.bd.setFaturado(faturado);
-        
+
         FacesMessage msg;
-        
+
         if (this.bd.insertBalancaDAO()) {
             msg = new FacesMessage("Cadastro efetuado!!!");
         } else {
             msg = new FacesMessage("Cadastro Falhou");
         }
-        
+
         FacesContext.getCurrentInstance().addMessage("form", msg);
+    }
+
+    public Navio pegarNavio(String str) {
+        cadc010Bean cad = new cadc010Bean();
+        ArrayList<Navio> list= cad.listarNavios();
+        
+        for (Navio navio1 : list) {
+            if (navio1.toString().equals(str)) {
+                return navio1;
+            }
+        }
+        return null;
+    }
+
+    public Produto pegarProduto(String str) {
+        estc007DAO est = new estc007DAO();
+        ArrayList<Produto> list = est.listarProdutos();
+        
+        for (Produto produto1 : list) {
+            if (produto1.toString().equals(str)) {
+                return produto1;
+            }
+        }
+        return null;
     }
 }

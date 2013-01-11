@@ -4,8 +4,12 @@
 package Bean;
 
 import DAO.cadc010DAO;
+import Entidades.Navio;
+import java.util.ArrayList;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -43,16 +47,32 @@ public class cadc010Bean {
         this.cd_navio = cd_navio;
     }
     
-    public void Cadastrar () {
+    public void cadastrar() {
         this.cadc10.setCd_navio(cd_navio);
         this.cadc10.setDescricao(descricao);
         //inserção
-        this.cadc10.insertestc007DAO();
+         FacesMessage msg;
+       
+        if (this.cadc10.insertcadc010DAO()) {
+            msg = new FacesMessage("Cadastro efetuado!!!");
+        } else {
+            msg = new FacesMessage("Cadastro Falhou");
+        }
+        
+        FacesContext.getCurrentInstance().addMessage("form", msg);
     }
 
+     public ArrayList<Navio> listarNavios() {
+        
+        return cadc10.listarNavios();
+    }
+    
+    
     /**
      * Creates a new instance of cadc010Bean
      */
     public cadc010Bean() {
     }
+    
+    
 }

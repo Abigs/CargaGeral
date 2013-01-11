@@ -5,13 +5,13 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core">
-    <ui:define name="titulo">balanca</ui:define>
+    <ui:define name="titulo">Balança</ui:define>
     <ui:define name="content">
         <h:form id="novaPesagem">
             <div align="center" id="corpo">
                 <br></br>
                 <p:panelGrid columns="6"  id="painelMovimentacoes" style="text-align: center">
-                    <f:facet name="header">Balanca</f:facet>
+                    <f:facet name="header">Balança</f:facet>
 
                     <p:row>
                         <h:outputLabel id="labelNomeTicket" value="Ticket: "/>
@@ -24,49 +24,39 @@
                         <h:outputLabel id="labelCgc_cpf" value="CGC-CPF: "/>
                     </p:row>
                     <p:row>
-                        <p:inputText id="inputCgc_cpf" value="#{balancaBean.cgc_cpf}"/>
+                        <p:inputMask id="inputCgc_cpf" value="#{balancaBean.cgc_cpf}" mask="999.999.999-99"/>
                     </p:row>
 
                     <p:row>
-                        <h:outputLabel id="labelCd_navio" value="Código Navio: "/>
+                        <h:outputLabel id="labelCd_navio" value="Navio: "/>
                     </p:row>
                     <p:row>
-                        <p:inputText id="inputCd_navio" value="#{balancaBean.cd_navio}"/>
+                        <p:selectOneMenu id="selectNavio" value="#{balancaBean.strNavio}">
+                            <f:selectItems value="#{cadc010Bean.listarNavios()}"/>
+                        </p:selectOneMenu>
                     </p:row>
 
                     <p:row>
                         <h:outputLabel id="labelCd_item" value="Código Item: "/>
                     </p:row>
                     <p:row>
-                        <p:inputText id="inputCd_item" value="#{balancaBean.cd_item}"/>
-                    </p:row>
-
-                    <p:row>
-                        <h:outputLabel id="labelDescricaoProduto" value="descrição do pruduto: "/>
-                    </p:row>
-                    <p:row>
-                        <p:inputTextarea id="inputDescricaoProduto" value="#{balancaBean.descricao_produto}"/>
-                    </p:row>
-
-                    <p:row>
-                        <h:outputLabel id="labelDescricaoNavio" value="descrição do Navio: "/>
-                    </p:row>
-                    <p:row>
-                        <p:inputTextarea id="inputDescricaoNavio" value="#{balancaBean.descricao_navio}"/>
+                        <p:selectOneMenu id="selectCd_item" value="#{balancaBean.strProduto}">
+                            <f:selectItems value="#{estc007Bean.listarProduto()}"/>
+                        </p:selectOneMenu>
                     </p:row>
 
                     <p:row>
                         <h:outputLabel id="labelPlacaCavalo" value="Placa do Cavalo: "/>
                     </p:row>
                     <p:row>
-                        <p:inputText id="inputPlacaCavalo" value="#{balancaBean.placa_cavalo}"/>
+                        <p:inputMask id="inputPlacaCavalo" value="#{balancaBean.placa_cavalo}" mask="AAA-9999"/>
                     </p:row>
 
                     <p:row>
                         <h:outputLabel id="labelPlacaCarreta" value="Placa da Carreta: "/>
                     </p:row>
                     <p:row>
-                        <p:inputText id="inputPlacaCarreta" value="#{balancaBean.placa_carreta}"/>
+                        <p:inputMask id="inputPlacaCarreta" value="#{balancaBean.placa_carreta}" mask="AAA-9999"/>
                     </p:row>
 
                     <p:row>
@@ -77,10 +67,10 @@
                     </p:row>
 
                     <p:row>
-                        <h:outputLabel id="labelCnjTransportadora" value="CNJ Transportadora: "/>
+                        <h:outputLabel id="labelCnjTransportadora" value="CNPJ Transportadora: "/>
                     </p:row>
                     <p:row>
-                        <p:inputText id="inputCnjTransportadora" value="#{balancaBean.cnj_transportadora}"/>
+                        <p:inputMask id="inputCnjTransportadora" value="#{balancaBean.cnj_transportadora}" mask="99.999.999/9999-99"/>
                     </p:row>
 
                     <p:row>
@@ -137,11 +127,7 @@
                 
                 <p:commandButton value="Cadastrar" actionListener="#{balancaBean.cadastrar()}" ajax="false"/>  
                 <h:message for="form"/>
-
-
-
             </div>
-
         </h:form>
     </ui:define>
 </ui:composition>

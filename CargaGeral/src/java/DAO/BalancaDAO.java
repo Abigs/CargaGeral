@@ -212,7 +212,7 @@ public class BalancaDAO extends PostgresDAO {
                     + getPeso() + ", "
                     + getPeso_entrada() + ", "
                     + getPeso_saida() + ");";
-            System.out.println(getTicket());
+           
     //depois tem que adicionar a data e booleano
             Class.forName("org.postgresql.Driver");
             java.sql.Connection conexao = DriverManager.getConnection(this.url, this.usuario, this.senha);

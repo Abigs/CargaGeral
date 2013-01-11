@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author samuel
  */
-public class fatm002 extends PostgresDAO{
+public class fatm002DAO extends PostgresDAO{
 
     double aliq;
     double aliq_cofins;
@@ -84,7 +84,7 @@ public class fatm002 extends PostgresDAO{
     double vlr_unitario;
     int id;
 
-    public fatm002() {
+    public fatm002DAO() {
     }
 
     public double getAliq() {

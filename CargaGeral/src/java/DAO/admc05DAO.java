@@ -14,14 +14,14 @@ import java.util.logging.Logger;
  *
  * @author samuel
  */
-public class admc05 extends PostgresDAO{
+public class admc05DAO extends PostgresDAO{
     int id;
     String usuario;
     String senha;
     boolean autorizado;
     boolean acesso_filial;
 
-    public admc05() {
+    public admc05DAO() {
         this.id = 0;
         this.usuario = "";
         this.autorizado = false;
