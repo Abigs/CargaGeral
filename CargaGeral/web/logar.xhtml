@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./modelo.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <ui:define name="titulo">Logar Usuário</ui:define>
+    <ui:define name="content">
+        <h:form id="logarUsuario">
+            <div align="center" id="corpo">
+                <br></br>
+                <p:panelGrid columns="2"  id="painelLogar" style="text-align: center">
+                    <f:facet name="header">Logar Usuário</f:facet>
+
+                    <p:row>
+                        <h:outputLabel id="labelUsuario" value="Usuário: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputText id="inputUsuario" value="#{admc05Bean.usuario}"/>
+                    </p:row>
+                    
+                    <p:row>
+                        <h:outputLabel id="labelSenha" value="Senha: "/>
+                    </p:row>
+                    <p:row>
+                        <p:inputText id="inputSenha" value="#{admc05Bean.senha}" type="password"/>
+                    </p:row>
+
+                </p:panelGrid>
+                <br></br>
+                
+                <p:commandButton value="Logar" actionListener="#{admc05Bean.verificarAdmc05()}" ajax="false"/>  
+                <h:message for="form"/>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+

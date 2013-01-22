@@ -222,6 +222,8 @@ public class BalancaBean {
     }
 
     public void cadastrar() {
+        
+        retirarCnpj();
 
         this.navio = pegarNavio(strNavio);
         this.produto = pegarProduto(strProduto);
@@ -278,4 +280,19 @@ public class BalancaBean {
         }
         return null;
     }
+    
+    public void retirarCnpj () {
+        String aux = this.cnj_transportadora;
+        String aux2 = "";
+        
+        for (int i = 0; i < aux.length(); i++) {
+            if ((aux.charAt(i) == '1') || (aux.charAt(i) == '2') ||(aux.charAt(i) == '3') ||(aux.charAt(i) == '4') ||(aux.charAt(i) == '5') ||(aux.charAt(i) == '6') ||(aux.charAt(i) == '7') ||(aux.charAt(i) == '8') ||(aux.charAt(i) == '9') ||(aux.charAt(i) == '0')) {
+                aux2 = aux2 + aux.charAt(i);
+            }
+            
+        }
+        
+        setCnj_transportadora(aux2);
+    }
+    
 }

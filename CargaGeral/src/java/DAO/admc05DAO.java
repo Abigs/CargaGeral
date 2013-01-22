@@ -4,7 +4,9 @@
  */
 package DAO;
 
+import Entidades.Produto;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -14,7 +16,8 @@ import java.util.logging.Logger;
  *
  * @author samuel
  */
-public class admc05DAO extends PostgresDAO{
+public class admc05DAO extends PostgresDAO {
+
     int id;
     String usuario;
     String senha;
@@ -25,7 +28,7 @@ public class admc05DAO extends PostgresDAO{
         this.id = 0;
         this.usuario = "";
         this.autorizado = false;
-        this.senha  = "";
+        this.senha = "";
         this.acesso_filial = false;
     }
 
@@ -68,8 +71,8 @@ public class admc05DAO extends PostgresDAO{
     public void setAcesso_filial(boolean acesso_filial) {
         this.acesso_filial = acesso_filial;
     }
-       
-     public void insertestc007DAO() {
+
+    public void insertestc007DAO() {
         try {
             String str = "INSERT INTO balanca VALUES ("
                     + getId() + ", "
@@ -78,7 +81,7 @@ public class admc05DAO extends PostgresDAO{
                     + isAutorizado() + ", "
                     + isAcesso_filial() + ", "
                     + ");";
-            
+
             Class.forName("org.postgresql.Driver");
             java.sql.Connection conexao = DriverManager.getConnection(this.url, this.usuario, this.senha);
             Statement statement = conexao.createStatement();
@@ -89,5 +92,28 @@ public class admc05DAO extends PostgresDAO{
             Logger.getLogger(BalancaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    public boolean verificarAcesso(String nome, String senha) {
+        try {
+            String str = "SELECT * FROM admc05 WHERE usuario = '" + nome + "' and senha = '" + senha + "';";
+
+            Class.forName("org.postgresql.Driver");
+            java.sql.Connection conexao = DriverManager.getConnection(this.url, this.usuario, this.senha);
+            Statement statement = conexao.createStatement();
+            ResultSet rs = statement.executeQuery(str);
+            try {
+                if (rs.first()) {
+                    return true;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(admc05DAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(admc05DAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(admc05DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }
